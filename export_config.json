@@ -1,8 +1,0 @@
-{
-  "subscription_id": "8bf1d108-95e8-45aa-bd86-005716774515",
-  "resource_group_name": "exportvmtags",
-  "vm_names": [
-    "vm-demo-01",
-    "vm-demo-02"
-  ]
-}
