@@ -1,0 +1,29 @@
+name: Export VM tags to Excel
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sign in to Azure with OIDC
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - name: Install Python dependency
+        run: python3 -m pip install -r export_requirements.txt
+      - name: Export VM details and tags
+        run: python3 export_vm_tags.py
+      - name: Downloadable Excel workbook
+        uses: actions/upload-artifact@v4
+        with:
+          name: azure-vm-tags
+          path: azure_vm_tags.xlsx
