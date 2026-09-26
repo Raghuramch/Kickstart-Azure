@@ -1,0 +1,12 @@
+subscription_id      = "00000000-0000-0000-0000-000000000000"
+location             = "eastus"
+resource_group_name  = "rg-terraform-state"
+storage_account_name = "tfstatechangeunique123"
+container_name       = "tfstate"
+state_key            = "terraform.tfstate"
+
+tags = {
+  ManagedBy   = "Terraform"
+  Purpose     = "Terraform state"
+  Environment = "shared"
+}

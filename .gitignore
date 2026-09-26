@@ -1,0 +1,8 @@
+.terraform/
+.terraform.lock.hcl
+.terraform-state/
+terraform.tfvars
+backend.hcl
+*.tfplan
+*.tfstate
+*.tfstate.*
