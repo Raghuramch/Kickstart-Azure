@@ -11,3 +11,20 @@ jobs:
     steps:
       - name: Print Hello World
         run: echo "Hello, World!"
+  terraform-validate:
+    name: terraform validate
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./examples/backend-bootstrap
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: setup terraform
+        uses: hashicorp/setup-terraform@v3
+      - name: Terraform init
+        uses: terraform init -backend=false
+      - name: Terraform validate
+        uses: terraform validate
+
+    
